@@ -8,8 +8,8 @@ I implemented the cart pole benchmark using [MuJoCo](http://www.mujoco.org/) and
 I did this because OpenAI's CartPole environment does not have a continuous action space and because the [InvertedPendulum-v2 environment](https://gym.openai.com/envs/InvertedPendulum-v2/) uses an "inverted" cart pole.
 The new environment represents the traditional cart pole benchmark with a continuous action space.
 
-The ```env/cart_pole_env.py``` file contains the new CartPole class, based on [InvertedPendulum-v2](https://gym.openai.com/envs/InvertedPendulum-v2/).
-I also created the ```env/cart_pole.xml``` file defining the MuJoCo environment for the traditional cart pole.
+The [env/cart_pole_env.py](env/cart_pole_env.py) file contains the new CartPole class, based on [InvertedPendulum-v2](https://gym.openai.com/envs/InvertedPendulum-v2/).
+I also created the [env/cart_pole.xml](env/cart_pole.xml) file defining the MuJoCo environment for the traditional cart pole.
 
 ### Prerequisites
 The example requires the [MuJoCo](http://www.mujoco.org/) (Multi-Joint dynamics with Contact) physics engine in order to use [OpenAI's](https://gym.openai.com/) Inverted Pendulum [simulation environment](https://gym.openai.com/envs/InvertedPendulum-v2/).
@@ -21,7 +21,7 @@ Install the requirements using ```pip install -r requirements```.
 - You may want to use a virtual environment for this.
 
 ### Example
-An example of implementing the code is given for the cart pole environment and can be in [examples/cart_pole.py](./examples/cart_pole.py).
+An example of implementing the code is given for the cart pole environment and can be found in [examples/cart_pole.py](./examples/cart_pole.py).
 
 
 
