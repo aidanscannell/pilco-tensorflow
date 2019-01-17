@@ -1,0 +1,7 @@
+numpy
+tensorflow
+time
+gpflow
+IPython
+abc
+gym
