@@ -7,11 +7,10 @@ from pilco.cost import SaturatingCost
 # from pilco.cost import ExponentialReward
 
 from env.cart_pole_env import CartPole
-
 env = CartPole()
-env.reset()
 
 # env = gym.make('InvertedPendulum-v2')
+env.reset()
 
 
 def rollout(policy, timesteps):
@@ -52,30 +51,34 @@ def rollout(policy, timesteps):
 
 
 def random_policy(x):
-    a = env.action_space.sample() * 4
-    if a >= env.action_space.high:
-        a = env.action_space.high
-    if a <= env.action_space.low:
-        a = env.action_space.low
-    return env.action_space.sample()
+    # a = env.action_space.sample() * 4
+    a = env.action_space.sample()
+    # if a >= env.action_space.high:
+    #     a = env.action_space.high
+    # if a <= env.action_space.low:
+    #     a = env.action_space.low
+    print(a)
+    return a
+    # return env.action_space.sample()
 
 
 def pilco_policy(x):
     return pilco.compute_action(x[None, :])[0, :]
 
 
-x, y = rollout(policy=random_policy, timesteps=60)
+x, y = rollout(policy=random_policy, timesteps=40)
 for i in range(1, 3):
-    x_, y_ = rollout(policy=random_policy, timesteps=60)
+    x_, y_ = rollout(policy=random_policy, timesteps=40)
     x = np.vstack((x, x_))
     y = np.vstack((y, y_))
 
 state_dim = y.shape[1]
 control_dim = x.shape[1] - state_dim
+
 RBFNPolicy = RBFNPolicy(
     state_dim,
     control_dim=control_dim,
-    num_basis_fun=50,
+    num_basis_fun=10,
     max_action=env.action_space.high[0])
 
 a = 0.25
